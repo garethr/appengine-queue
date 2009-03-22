@@ -1,0 +1,37 @@
+h2. Overview
+
+This demonstrates a simple Queue mechanism you can use in App Engine applications. It is based on code taken from "Jaikuengine":code.google.com/p/jaikuengine/ and then modified for a more generic purpose. Creating tasks is as simple as:
+
+<pre>task_create('test', '1', ['test argument 1'])</pre>
+
+Where _test_ is the name of the mapping in api.py, _1_ is a unique identifier for the task and _['test argument 1']_ is a list of arguments to pass to the _test_ method.
+
+Once you have a set of tasks in the queue you process them like so:
+
+<pre>task_process()</pre>
+
+h2. Example
+
+The main.py and api.py files contains a reference implementation. If you run the application you can visit "localhost:8080/seed":http://localhost:8080/seed to create a series of tasks and then "localhost:8080":http://localhost:8080/ to process a task at a time. In a real application you could set up an external cron to ping an end point to process items from the queue.
+
+h2. Todo
+
+* Jaikuengine has a test suite, some of which can be reused here. But I need to write a few test of my own to be sure everything is working.
+* The whole codebase is in need of good comments to explain what's going on.
+* Some variables have meaningless one or two letter names. This is a left over from the Jaikuengine code and just needs a bit of refactoring.
+
+h2. Licence
+
+Copyright 2009 Gareth Rushgrove
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
